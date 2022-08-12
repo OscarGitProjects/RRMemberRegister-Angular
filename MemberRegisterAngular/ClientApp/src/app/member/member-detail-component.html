@@ -1,0 +1,32 @@
+<div *ngIf='member else noData'>
+  <h1>{{pageTitle + ' ' + member.fornamn + ' ' + member.efternamn}}</h1>
+
+  <br />
+
+  <dl class="row">
+    <dt class="col-sm-2">Medlemens id</dt>
+    <dt class="col-sm-10">{{member.id}}</dt>
+
+    <dt class="col-sm-2">Namn</dt>
+    <dt class="col-sm-10">{{member.fornamn + ' ' + member.efternamn}}</dt>
+
+    <dt class="col-sm-2">Adress</dt>
+    <dt class="col-sm-10">{{member.adress}}</dt>
+
+    <dt class="col-sm-2">Postnummer</dt>
+    <dt class="col-sm-10">{{member.postnummer}}</dt>
+
+    <dt class="col-sm-2">Postort</dt>
+    <dt class="col-sm-10">{{member.postort}}</dt>
+
+    <dt class="col-sm-2">Skapad</dt>
+    <dt class="col-sm-10">{{member.skapatdatumasstring}}</dt>
+  </dl>
+</div>
+<ng-template #noData>
+  <h1>{{pageTitle}}</h1>
+  <hr />
+  <div>
+    <p>Hittade ingen information om medlemen</p>
+  </div>
+</ng-template>

@@ -1,0 +1,48 @@
+<h1>{{pageTitle}}</h1>
+
+<br />
+
+<div *ngIf="messageTyp > 0" class="alert alert-success" role="alert">{{message}}</div>
+
+<div *ngIf="messageTyp == -1" class="alert alert-danger" role="alert">{{message}}</div>
+
+<a [routerLink]='["/member-create"]'>Skapa ny medlem</a>
+<br />
+<div *ngIf="members?.length > 0; else noData">
+  <table class="table" *ngIf="members?.length > 0">
+    <thead>
+      <tr>
+        <th>Medlemens id</th>
+        <th>Förnamn</th>
+        <th>Efternamn</th>
+        <th>Adress</th>
+        <th>Postnummer</th>
+        <th>Postort</th>
+        <th>Skapad</th>
+        <th></th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let member of members">
+        <td>{{member.id}}</td>
+        <td>{{member.fornamn}}</td>
+        <td>{{member.efternamn}}</td>
+        <td>{{member.adress}}</td>
+        <td>{{member.postnummer}}</td>
+        <td>{{member.postort}}</td>       
+        <td>{{member.skapatdatumasstring}}</td>
+        <td></td>
+        <td>
+          <a [routerLink]='["/member-detail", member.id]'>Detaljer</a> |
+          <a [routerLink]='["/member-edit", member.id]'>Ändra</a> |
+          <a [routerLink]='["/member-delete", member.id]'>Radera</a>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+</div>
+<ng-template #noData>
+  <div>
+    <p>Inga medlemmar</p>
+  </div>
+</ng-template>

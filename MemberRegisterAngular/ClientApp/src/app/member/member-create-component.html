@@ -1,0 +1,60 @@
+<h1>{{pageTitle}}</h1>
+
+<br />
+
+<div *ngIf="messageTyp > 0" class="alert alert-success" role="alert">{{message}}</div>
+
+<div *ngIf="messageTyp == -1" class="alert alert-danger" role="alert">{{message}}</div>
+
+<form #createForm="ngForm" (ngSubmit)="createForm.form.valid && onSubmit(createForm)">
+  <div class="row">
+    <div class="col-md-4">
+      <div class="form-group">
+        <label for="fornamn" class="control-label">Förnamn</label>
+        <input type="text" id="fornamn" name="fornamn" placeholder="Ange förnamn" class="form-control" #fornamn="ngModel" required ngModel />
+        <div class="alert alert-danger" *ngIf="fornamn.touched && !fornamn.valid">
+          <div *ngIf="fornamn.errors.required">Ni måste ange förnamn</div>
+        </div>
+      </div>
+
+      <div class="form-group">
+        <label for="efternamn" class="control-label">Efternamn</label>
+        <input type="text" id="efternamn" name="efternamn" placeholder="Ange efternamn" class="form-control" #efternamn="ngModel" required ngModel />
+        <div class="alert alert-danger" *ngIf="efternamn.touched && !efternamn.valid">
+          <div *ngIf="efternamn.errors.required">Ni måste ange efternamn</div>
+        </div>
+      </div>
+
+      <div class="form-group">
+        <label for="adress" class="control-label">Adress</label>
+        <input type="text" id="adress" name="adress" placeholder="Ange adress" class="form-control" #adress="ngModel" required ngModel />
+        <div class="alert alert-danger" *ngIf="adress.touched && !adress.valid">
+          <div *ngIf="adress.errors.required">Ni måste ange adress</div>
+        </div>
+      </div>
+
+      <div class="form-group">
+        <label for="postnummer" class="control-label">Postnummer</label>
+        <input type="text" id="postnummer" name="postnummer" placeholder="Ange postnummer" class="form-control" #postnummer="ngModel" required ngModel />
+        <div class="alert alert-danger" *ngIf="postnummer.touched && !postnummer.valid">
+          <div *ngIf="postnummer.errors.required">Ni måste ange postnummer</div>
+        </div>
+      </div>
+
+      <div class="form-group">
+        <label for="postort" class="control-label">Postort</label>
+        <input type="text" id="postort" name="postort" placeholder="Ange postort" class="form-control" #postort="ngModel" required ngModel />
+        <div class="alert alert-danger" *ngIf="postort.touched && !postort.valid">
+          <div *ngIf="postort.errors.required">Ni måste ange postort</div>
+        </div>
+      </div>
+
+      <div class="form-group">
+        <div class="cols-sm-12">
+          <input type="submit" value="Spara" class="btn btn-primary" />
+          <a [routerLink]="['/member-list']" class="btn btn-secondary">Avbryt</a>
+        </div>
+      </div>
+    </div>
+  </div>
+</form>
